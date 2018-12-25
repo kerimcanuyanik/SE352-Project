@@ -7,6 +7,8 @@ public class BulletShooter : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform BulletSpawn;
 
+
+
     void Update()
     {
 
@@ -24,8 +26,8 @@ public class BulletShooter : MonoBehaviour
             BulletSpawn.position,
             BulletSpawn.rotation);
 
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 5;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
 
-        Destroy(bullet, 2.0f);
+        Destroy(bullet, 10f);
     }
 }

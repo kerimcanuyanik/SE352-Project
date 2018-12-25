@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour {
 
-    public float Speed = 5f;
+    public float MoveSpeed = 10f;
+    public float TurnSpeed = 25f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -13,7 +14,7 @@ public class PlayerMover : MonoBehaviour {
 
         float upSpeed = Input.GetAxis("Vertical");
 
-        transform.Translate(0, 0, Speed * upSpeed * Time.deltaTime);
-        transform.Translate(Speed * rightSpeed * Time.deltaTime, 0, 0);
+        transform.Translate(0, 0, MoveSpeed * upSpeed * Time.deltaTime);
+        transform.Rotate(0, TurnSpeed * rightSpeed * Time.deltaTime, 0);
     }
 }
