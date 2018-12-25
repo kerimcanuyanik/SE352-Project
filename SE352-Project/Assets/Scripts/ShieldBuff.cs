@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class SpeedBuff : NetworkBehaviour {
+public class ShieldBuff : NetworkBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            CmdActiveSpeedBuff(collider.gameObject, 2f);
+            CmdActiveShieldBuff(collider.gameObject);
 
-            Debug.Log("Speed Up");
+            Debug.Log("Shield Up");
 
             CmdDestroy();
         }
     }
 
     [Command]
-    void CmdActiveSpeedBuff(GameObject player, float buff)
+    void CmdActiveShieldBuff(GameObject player)
     {
-        player.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        player.gameObject.GetComponent<PlayerMover>().SpeedBuffer(buff);
+        player.gameObject.transform.GetChild(2).gameObject.SetActive(true);
     }
 
     [Command]

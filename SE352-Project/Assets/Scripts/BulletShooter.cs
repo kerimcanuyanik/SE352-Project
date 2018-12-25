@@ -1,32 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class BulletShooter : MonoBehaviour
-{
+public class BulletShooter : NetworkBehaviour {
+
     public GameObject BulletPrefab;
     public Transform BulletSpawn;
-
-
 
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Fire();
+            CmdFire();
         }
     }
 
-
-    void Fire()
+    [Command]
+    void CmdFire()
     {
-        var bullet = (GameObject)Instantiate(
+        GameObject bullet = Instantiate(
             BulletPrefab,
             BulletSpawn.position,
-            BulletSpawn.rotation);
+            BulletSpawn.rotation) as GameObject;
 
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+
+        NetworkServer.Spawn(bullet);
 
         Destroy(bullet, 10f);
     }

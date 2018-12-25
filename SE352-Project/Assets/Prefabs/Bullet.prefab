@@ -23,6 +23,9 @@ GameObject:
   - component: {fileID: 23487003486268568}
   - component: {fileID: 135365402045701248}
   - component: {fileID: 54690391729087220}
+  - component: {fileID: 114322985332173034}
+  - component: {fileID: 114439351321293356}
+  - component: {fileID: 114419020855268598}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -100,6 +103,70 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114322985332173034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169692791083636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 145
+    i1: 241
+    i2: 39
+    i3: 232
+    i4: 42
+    i5: 166
+    i6: 143
+    i7: 4
+    i8: 40
+    i9: 244
+    i10: 227
+    i11: 1
+    i12: 164
+    i13: 52
+    i14: 132
+    i15: 146
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114419020855268598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169692791083636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81255fd32a00ea34eab8a75823522404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114439351321293356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169692791083636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135365402045701248
 SphereCollider:
   m_ObjectHideFlags: 1
