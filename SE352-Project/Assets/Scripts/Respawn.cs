@@ -7,27 +7,37 @@ public class Respawn : NetworkBehaviour {
 
     public GameObject GunnerStartPosition;
     public GameObject RunnerStartPosition;
-    public GameObject CheckpointPosition;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<PlayerMover>().IsGunner())
         {
-            CmdRespawnPlayer(collision.gameObject, GunnerStartPosition.transform.position);
+            if (hasAuthority)
+            {
+                RpcRespawnPlayer(collision.gameObject, GunnerStartPosition.transform.position);
+            }
+            else
+                CmdRespawnPlayer(collision.gameObject, GunnerStartPosition.transform.position);
         }
-        else if(!collision.gameObject.GetComponent<PlayerMover>().IsGunner() && !collision.gameObject.GetComponent<PlayerMover>().IsCheckpoint())
+        else
         {
-            CmdRespawnPlayer(collision.gameObject, RunnerStartPosition.transform.position);
+            if (hasAuthority)
+            {
+                RpcRespawnPlayer(collision.gameObject, RunnerStartPosition.transform.position);
+            }
+            else
+                CmdRespawnPlayer(collision.gameObject, RunnerStartPosition.transform.position);
         }
-        else if(!collision.gameObject.GetComponent<PlayerMover>().IsGunner() && collision.gameObject.GetComponent<PlayerMover>().IsCheckpoint())
-        {
-            CmdRespawnPlayer(collision.gameObject, CheckpointPosition.transform.position);
-        }
-
     }
 
     [Command]
     void CmdRespawnPlayer(GameObject player, Vector3 position)
+    {
+        RpcRespawnPlayer(player, position);
+    }
+
+    [ClientRpc]
+    void RpcRespawnPlayer(GameObject player, Vector3 position)
     {
         player.transform.position = position;
     }

@@ -1,32 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class SpeedBuff : NetworkBehaviour {
+public class SpeedBuff : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            CmdActiveSpeedBuff(collider.gameObject, 2f);
-
+            collider.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            collider.gameObject.GetComponent<PlayerMover>().SpeedBuffer(2f);
             Debug.Log("Speed Up");
-
-            CmdDestroy();
+            Destroy(this.gameObject);
         }
-    }
-
-    [Command]
-    void CmdActiveSpeedBuff(GameObject player, float buff)
-    {
-        player.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        player.gameObject.GetComponent<PlayerMover>().SpeedBuffer(buff);
-    }
-
-    [Command]
-    void CmdDestroy()
-    {
-        Destroy(this);
     }
 }

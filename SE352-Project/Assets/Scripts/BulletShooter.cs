@@ -28,7 +28,7 @@ public class BulletShooter : NetworkBehaviour {
             BulletSpawn.position,
             BulletSpawn.rotation) as GameObject;
 
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 25;
 
         NetworkServer.Spawn(bullet);
 

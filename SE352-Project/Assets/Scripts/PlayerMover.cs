@@ -6,11 +6,10 @@ using UnityEngine.Networking;
 public class PlayerMover : NetworkBehaviour {
 
     public float MoveSpeed = 10f;
-    public float TurnSpeed = 35f;
+    public float TurnSpeed = 50f;
     public GameObject gun;
     public GameObject cam;
     private bool isGunner;
-    private bool isCheckpoint;
 	
 	// Update is called once per frame
 	void Update () {
@@ -52,15 +51,5 @@ public class PlayerMover : NetworkBehaviour {
     public bool IsGunner()
     {
         return isGunner;
-    }
-
-    public void SetCheckpoint(bool var)
-    {
-        isGunner = var;
-        return;
-    }
-    public bool IsCheckpoint()
-    {
-        return isCheckpoint;
     }
 }

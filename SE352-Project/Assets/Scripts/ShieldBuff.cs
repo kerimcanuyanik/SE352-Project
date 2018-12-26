@@ -1,31 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class ShieldBuff : NetworkBehaviour {
+public class ShieldBuff : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            CmdActiveShieldBuff(collider.gameObject);
-
+            collider.gameObject.transform.GetChild(3).gameObject.SetActive(true);
             Debug.Log("Shield Up");
-
-            CmdDestroy();
+            Destroy(this.gameObject);
         }
-    }
-
-    [Command]
-    void CmdActiveShieldBuff(GameObject player)
-    {
-        player.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-    }
-
-    [Command]
-    void CmdDestroy()
-    {
-        Destroy(this);
     }
 }

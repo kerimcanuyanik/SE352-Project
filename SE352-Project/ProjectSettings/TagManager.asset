@@ -7,6 +7,7 @@ TagManager:
   - Shield
   - Speed
   - ActiveShield
+  - ActiveSpeed
   layers:
   - Default
   - TransparentFX
