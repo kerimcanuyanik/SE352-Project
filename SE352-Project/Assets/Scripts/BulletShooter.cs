@@ -7,13 +7,16 @@ public class BulletShooter : NetworkBehaviour {
 
     public GameObject BulletPrefab;
     public Transform BulletSpawn;
+    public GameObject Gun;
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Gun.activeSelf)
         {
-            CmdFire();
+            if (Input.GetMouseButtonDown(0))
+            {
+                CmdFire();
+            }
         }
     }
 

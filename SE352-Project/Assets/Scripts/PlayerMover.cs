@@ -8,6 +8,7 @@ public class PlayerMover : NetworkBehaviour {
     public float MoveSpeed = 10f;
     public float TurnSpeed = 35f;
     public GameObject gun;
+    public GameObject cam;
     private bool isGunner;
     private bool isCheckpoint;
 	
@@ -16,6 +17,7 @@ public class PlayerMover : NetworkBehaviour {
 
         if (!isLocalPlayer)
         {
+            cam.SetActive(false);
             return;
         }
 
